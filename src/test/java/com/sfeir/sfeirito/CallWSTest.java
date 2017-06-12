@@ -18,7 +18,7 @@ public class CallWSTest {
 		// Given
 		// When
 		//List<String> callApi = callApi("https://code.google.com/apis/console");
-		List<String> callApi = callApi("http://10.2.32.124:8080/runTests");
+		List<String> callApi = callApi("http://10.2.32.126:8080/runTests");
 		// Then
 		Assert.assertNotNull(callApi);
 		Assert.assertFalse(callApi.isEmpty());
