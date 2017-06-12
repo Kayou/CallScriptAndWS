@@ -6,33 +6,37 @@ import java.io.InputStreamReader;
 import java.net.URISyntaxException;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
-import org.junit.Assert;
 import org.junit.Test;
 
-public class ExecutionScriptTest {
-
+public abstract class ExecutionScriptTest {
+	
+	protected String commandFile; 
 	
 	@Test
-	public void testRunOk() throws Exception {
-		// Given
-		// Then
-		Process proc = execScript("testExecScript.sh");
-		// When
-		List<String> readConsole = readConsole(proc);
-		Assert.assertNotNull(readConsole);
-		Assert.assertFalse(readConsole.isEmpty());
-	}
+	public abstract void testRunOk() throws Exception;
 	
-	protected Process execScript(String fileName) throws IOException, URISyntaxException{
+	protected Process execScript(String fileName, String... args) throws IOException, URISyntaxException{
+ 
 		String pathScriptFile = Paths.get(ClassLoader.getSystemResource(fileName).toURI()).toString();
 		
-		Runtime runtime = Runtime.getRuntime();
+		Runtime runtime = Runtime.getRuntime(); 
+		
 		// Authorization d'execution
 		runtime.exec("chmod +x "+pathScriptFile);
+		 
+		String arguments = Arrays.toString(args); 
+		if(arguments.length() > 0){
+			arguments = arguments.substring(1,arguments.length() - 1);
+		}
+		if(args.length > 1){
+			arguments = arguments.replace(","," ");
+		}
+		
 		// Execution du script
-		return runtime.exec(pathScriptFile);
+		return runtime.exec(pathScriptFile + " "+ arguments);
 	}
 	
 	protected List<String> readConsole(Process proc) {

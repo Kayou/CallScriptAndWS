@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source ~/.profile
+
 ###################
 ###activer/desactiver reseau (root?)
 ###################

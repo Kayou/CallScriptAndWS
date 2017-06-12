@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source ~/.profile
+
 ###################
 ###lister les alarmes
 ###################

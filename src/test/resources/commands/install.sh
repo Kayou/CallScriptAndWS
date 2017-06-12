@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source ~/.profile
+
 ###################
 ###installer / MAJ apk
 ###################

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source ~/.profile
+
 ###################
 ###rotation ecran
 ### 0           # Portrait 
