@@ -18,7 +18,7 @@ public class InstallTest extends ExecutionScriptTest{
 	
 	@Override
 	public void testRunOk() throws Exception {
-		Process proc = Sfeirito.installApk("/Users/patrickvongpraseuth/git/CallScriptAndWS/src/test/resources/com.saschaha.one_v37_b39374.apk");
+		Process proc = Sfeirito.installApk("/Users/patrickvongpraseuth/git/CallScriptAndWS/src/test/resources/com.saschaha.one.apk");
 		List<String> readConsole = ExecutionScript.readConsole(proc);
 		Assert.assertNotNull(readConsole);
 		Assert.assertFalse(readConsole.isEmpty());

@@ -22,7 +22,7 @@ public class Sfeirito {
 		return ExecutionScript.execScript(CommandPathEnum.ALARMS);
 	}
 
-	public static Process execute(String api) throws IOException, URISyntaxException{
+	public static Process executeApi(String api) throws IOException, URISyntaxException{
 		return ExecutionScript.execScript(CommandPathEnum.CALL_API, api);
 	}
 
