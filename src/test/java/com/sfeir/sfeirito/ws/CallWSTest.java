@@ -1,4 +1,4 @@
-package com.sfeir.sfeirito;
+package com.sfeir.sfeirito.ws;
 
 import java.io.BufferedReader;
 import java.io.IOException;
