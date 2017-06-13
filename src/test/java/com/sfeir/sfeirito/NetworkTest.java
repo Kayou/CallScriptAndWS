@@ -22,6 +22,8 @@ public class NetworkTest extends ExecutionScriptTest{
 		List<String> readConsole = readConsole(proc);
 		Assert.assertNotNull(readConsole);
 		Assert.assertFalse(readConsole.isEmpty());
+
+		Thread.sleep(1000);
 		
 		proc = enableWifi();
 		readConsole = readConsole(proc);
@@ -43,19 +45,19 @@ public class NetworkTest extends ExecutionScriptTest{
 	
 	
 	public Process enableWifi() throws IOException, URISyntaxException{
-		return execScript(CommandPathEnum.WIFI, "1");
+		return execScript(CommandPathEnum.WIFI, "enable");
 	}
 
 	public Process disableWifi() throws IOException, URISyntaxException{
-		return execScript(CommandPathEnum.WIFI, "0");
+		return execScript(CommandPathEnum.WIFI, "disable");
 	}
 
 	
 	public Process enableMobileData() throws IOException, URISyntaxException{
-		return execScript(CommandPathEnum.MOBILE_DATA, "1");
+		return execScript(CommandPathEnum.MOBILE_DATA, "enable");
 	}
 
 	public Process disableMobileData() throws IOException, URISyntaxException{
-		return execScript(CommandPathEnum.MOBILE_DATA, "0");
+		return execScript(CommandPathEnum.MOBILE_DATA, "disable");
 	}
 }

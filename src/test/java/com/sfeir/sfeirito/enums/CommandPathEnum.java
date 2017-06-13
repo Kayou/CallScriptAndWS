@@ -10,6 +10,9 @@ public enum CommandPathEnum {
 	REBOOT("reboot.sh"),
 	ROTATE("rotate.sh"),
 	WIFI("wifi.sh"), 
+	PERMISSION("permission.sh"), 
+	APK_INSTALL("install.sh"),
+	APK_UNINSTALL("uninstall.sh"),  
 	FILE_UPLOAD("upload_file.sh"), 
 	FILE_DELETE("delete_file.sh"), 
 	MOBILE_DATA("mobile_data.sh");

@@ -22,8 +22,7 @@ public class FileTest extends ExecutionScriptTest{
 		List<String> readConsole = readConsole(proc);
 		Assert.assertNotNull(readConsole);
 		Assert.assertFalse(readConsole.isEmpty());
-		//TODO : find file
-		
+		//TODO : find file for assert
 		
 		Thread.sleep(1000);
 		

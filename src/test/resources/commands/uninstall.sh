@@ -5,5 +5,5 @@ source ~/.profile
 ###################
 ###suppression apk via package name
 ###################
-adb uninstall "com.saschaha.one"
+adb uninstall $1
 
