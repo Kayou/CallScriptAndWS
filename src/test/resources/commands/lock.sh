@@ -2,7 +2,12 @@
 
 source ~/.profile
 
+isOn=$(adb shell dumpsys power | grep mScreenOn=true)
+
 ###################
-###verouiller
+###verrouiller
 ###################
-adb shell input keyevent 26 # wakeup / sleep
+if ! [ -z "$isOn" ]
+then
+	adb shell input keyevent 26 # wakeup / sleep
+fi

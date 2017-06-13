@@ -3,8 +3,6 @@
 source ~/.profile
 
 ###################
-### appel de webservices
+###home
 ###################
-curl $1
-
-
+adb shell input keyevent $1

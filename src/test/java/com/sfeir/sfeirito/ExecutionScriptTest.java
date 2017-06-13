@@ -11,16 +11,16 @@ import java.util.List;
 
 import org.junit.Test;
 
+import com.sfeir.sfeirito.enums.CommandPathEnum;
+
 public abstract class ExecutionScriptTest {
-	
-	protected String commandFile; 
 	
 	@Test
 	public abstract void testRunOk() throws Exception;
 	
-	protected Process execScript(String fileName, String... args) throws IOException, URISyntaxException{
+	protected Process execScript(CommandPathEnum commandFile, String... args) throws IOException, URISyntaxException{
  
-		String pathScriptFile = Paths.get(ClassLoader.getSystemResource(fileName).toURI()).toString();
+		String pathScriptFile = Paths.get(ClassLoader.getSystemResource(commandFile.toString()).toURI()).toString();
 		
 		Runtime runtime = Runtime.getRuntime(); 
 		

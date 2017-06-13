@@ -9,4 +9,5 @@ source ~/.profile
 ### 2           # Portrait Reversed
 ### 3           # Landscape Reversed
 ###################
-adb shell settings put system user_rotation 3
+adb shell settings put system accelerometer_rotation 0
+adb shell settings put system user_rotation $1

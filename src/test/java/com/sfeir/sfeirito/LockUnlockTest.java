@@ -9,7 +9,7 @@ import org.junit.Before;
 
 import com.sfeir.sfeirito.enums.CommandPathEnum;
 
-public class AirplaneTest extends ExecutionScriptTest{
+public class LockUnlockTest extends ExecutionScriptTest{
 
 	@Before
 	public void initTest(){
@@ -18,23 +18,26 @@ public class AirplaneTest extends ExecutionScriptTest{
 	
 	@Override
 	public void testRunOk() throws Exception {
-		Process proc = disableAirplane();
+		Process proc = lock();
 		List<String> readConsole = readConsole(proc);
 		Assert.assertNotNull(readConsole);
 		Assert.assertFalse(readConsole.isEmpty());
+
+		Thread.sleep(1000);
 		
-		proc = enableAirplane();
+		proc = unlock();
 		readConsole = readConsole(proc);
 		Assert.assertNotNull(readConsole);
 		Assert.assertFalse(readConsole.isEmpty());
+		
 	}
 	
 	
-	public Process enableAirplane() throws IOException, URISyntaxException{
-		return execScript(CommandPathEnum.AIPLANE, "0");
+	public Process lock() throws IOException, URISyntaxException{
+		return execScript(CommandPathEnum.LOCK);
 	}
 
-	public Process disableAirplane() throws IOException, URISyntaxException{
-		return execScript(CommandPathEnum.AIPLANE, "1");
+	public Process unlock() throws IOException, URISyntaxException{
+		return execScript(CommandPathEnum.UNLOCK);
 	}
 }
