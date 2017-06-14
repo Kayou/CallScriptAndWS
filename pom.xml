@@ -6,10 +6,6 @@
 	<groupId>com.sfeir</groupId>
 	<version>1.0</version>
 
-	<properties>
-        <src.dir>src/java</src.dir>
-	</properties>
-
 	<artifactId>sfeirito</artifactId>
 
 	<dependencies>
@@ -20,7 +16,4 @@
 			<version>4.12</version>
 		</dependency>
 	</dependencies>
-	<build>
-        <sourceDirectory>${src.dir}</sourceDirectory>
-	</build>
 </project>

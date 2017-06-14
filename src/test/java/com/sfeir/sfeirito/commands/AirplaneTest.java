@@ -18,6 +18,7 @@ public class AirplaneTest extends ExecutionScriptTest{
 	
 	@Override
 	public void testRunOk() throws Exception {
+		
 		Process proc = Sfeirito.disableAirplane();
 		List<String> readConsole = ExecutionScript.readConsole(proc);
 		Assert.assertNotNull(readConsole);

@@ -14,7 +14,7 @@ public class RebootTest extends ExecutionScriptTest{
 	
 	@Override
 	public void testRunOk() throws Exception {
-		Process proc = Sfeirito.reboot();
+//		Process proc = Sfeirito.reboot();
 		
 		//assert a implementer
 	}

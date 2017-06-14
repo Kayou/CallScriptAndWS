@@ -14,7 +14,7 @@ import com.sfeir.sfeirito.enums.CommandPathEnum;
 public class ExecutionScript {
 	
 	public static Process execScript(CommandPathEnum commandFile, String... args) throws IOException, URISyntaxException{
- 
+
 		String pathScriptFile = Paths.get(ClassLoader.getSystemResource(commandFile.toString()).toURI()).toString();
 		
 		Runtime runtime = Runtime.getRuntime(); 

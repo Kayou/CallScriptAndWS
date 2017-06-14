@@ -2,7 +2,7 @@ package com.sfeir.sfeirito.enums;
 
 public enum CommandPathEnum {
 
-	AIPLANE("airplance.sh"),
+	AIPLANE("airplane.sh"),
 	ALARMS("alarms.sh"),
 	CALL_API("call_api.sh"),
 	LOCK("lock.sh"),
