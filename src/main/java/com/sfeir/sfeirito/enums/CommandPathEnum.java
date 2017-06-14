@@ -1,5 +1,12 @@
 package com.sfeir.sfeirito.enums;
 
+/**
+ * 
+ * Enumeration containing all scripts available in this library
+ * 
+ * @author patrickvongpraseuth
+ *
+ */
 public enum CommandPathEnum {
 
 	AIPLANE("airplane.sh"),
@@ -17,7 +24,9 @@ public enum CommandPathEnum {
 	FILE_DELETE("delete_file.sh"), 
 	MOBILE_DATA("mobile_data.sh");
 
+	//resource path directory
 	private String directory = "commands/";	
+	
 	private String filename;
 	
 	CommandPathEnum(String filename) {

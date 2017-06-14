@@ -1,5 +1,12 @@
 package com.sfeir.sfeirito.enums;
 
+/**
+ * 
+ * Permissions able to change
+ * 
+ * @author patrickvongpraseuth
+ *
+ */
 public enum PermissionEnum {
 	RECORD_AUDIO("android.permission.RECORD_AUDIO"),
 	ACCESS_FINE_LOCATION("android.permission.ACCESS_FINE_LOCATION"),

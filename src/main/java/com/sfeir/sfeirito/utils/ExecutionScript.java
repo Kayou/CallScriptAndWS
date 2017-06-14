@@ -11,15 +11,32 @@ import java.util.List;
 
 import com.sfeir.sfeirito.enums.CommandPathEnum;
 
+/**
+ * 
+ * Class util as unix terminal
+ * 
+ * @author patrickvongpraseuth
+ *
+ */
 public class ExecutionScript {
 	
+	/**
+	 * 
+	 * Execute shell scripts with arguments
+	 * 
+	 * @param commandFile
+	 * @param args
+	 * @return
+	 * @throws IOException
+	 * @throws URISyntaxException
+	 */
 	public static Process execScript(CommandPathEnum commandFile, String... args) throws IOException, URISyntaxException{
 
 		String pathScriptFile = Paths.get(ClassLoader.getSystemResource(commandFile.toString()).toURI()).toString();
 		
 		Runtime runtime = Runtime.getRuntime(); 
 		
-		// Authorization d'execution
+		// Allow script to be executed
 		runtime.exec("chmod +x "+pathScriptFile);
 		 
 		String arguments = Arrays.toString(args); 
@@ -30,10 +47,17 @@ public class ExecutionScript {
 			arguments = arguments.replace(","," ");
 		}
 		
-		// Execution du script
+		// script's execution
 		return runtime.exec(pathScriptFile + " "+ arguments);
 	}
 	
+	/**
+	 * 
+	 * Read process content ( result of a command's execution)
+	 * 
+	 * @param proc
+	 * @return
+	 */
 	public static List<String> readConsole(Process proc) {
 		List<String> consoleLine = new ArrayList<String>();
 		try {

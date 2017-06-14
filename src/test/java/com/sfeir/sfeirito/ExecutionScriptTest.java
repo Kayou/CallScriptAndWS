@@ -2,6 +2,13 @@ package com.sfeir.sfeirito;
 
 import org.junit.Test;
 
+/**
+ * 
+ * Class of tests
+ * 
+ * @author patrickvongpraseuth
+ *
+ */
 public abstract class ExecutionScriptTest {
 	
 	@Test
