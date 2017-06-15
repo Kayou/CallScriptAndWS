@@ -44,7 +44,11 @@ public class ExecutionScript {
 			arguments = arguments.substring(1,arguments.length() - 1);
 		}
 		if(args.length > 1){
-			arguments = arguments.replace(","," ");
+			String tmp = "";
+			for(String arg : args){
+				tmp += arg.trim()+" ";
+			}
+			arguments = tmp;
 		}
 		
 		// script's execution

@@ -11,6 +11,8 @@ import java.util.List;
 import org.junit.Assert;
 import org.junit.Test;
 
+import com.sfeir.sfeirito.enums.APIEnum;
+
 public class CallWSTest {
 
 	@Test
@@ -18,7 +20,7 @@ public class CallWSTest {
 		// Given
 		// When
 		//List<String> callApi = callApi("https://code.google.com/apis/console");
-		List<String> callApi = callApi("http://10.2.32.126:8080/runTests");
+		List<String> callApi = callApi(APIEnum.TEST.toString());
 		// Then
 		Assert.assertNotNull(callApi);
 		Assert.assertFalse(callApi.isEmpty());

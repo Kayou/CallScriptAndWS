@@ -7,6 +7,7 @@ import org.junit.Before;
 
 import com.sfeir.sfeirito.ExecutionScriptTest;
 import com.sfeir.sfeirito.Sfeirito;
+import com.sfeir.sfeirito.enums.APIEnum;
 import com.sfeir.sfeirito.utils.ExecutionScript;
 
 public class CallApiTest extends ExecutionScriptTest{
@@ -18,7 +19,7 @@ public class CallApiTest extends ExecutionScriptTest{
 	
 	@Override
 	public void testRunOk() throws Exception {
-		Process proc = Sfeirito.executeApi("http://10.2.32.126:8080/runTests");
+		Process proc = Sfeirito.executeApi(APIEnum.TEST);
 		List<String> readConsole = ExecutionScript.readConsole(proc);
 		Assert.assertNotNull(readConsole);
 		Assert.assertFalse(readConsole.isEmpty());

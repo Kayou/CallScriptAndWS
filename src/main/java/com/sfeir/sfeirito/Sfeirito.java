@@ -3,6 +3,7 @@ package com.sfeir.sfeirito;
 import java.io.IOException;
 import java.net.URISyntaxException;
 
+import com.sfeir.sfeirito.enums.APIEnum;
 import com.sfeir.sfeirito.enums.CommandPathEnum;
 import com.sfeir.sfeirito.enums.PermissionEnum;
 import com.sfeir.sfeirito.enums.RotationEnum;
@@ -62,8 +63,8 @@ public class Sfeirito {
 	 * @throws IOException
 	 * @throws URISyntaxException
 	 */
-	public static Process executeApi(String api) throws IOException, URISyntaxException{
-		return ExecutionScript.execScript(CommandPathEnum.CALL_API, api);
+	public static Process executeApi(APIEnum api) throws IOException, URISyntaxException{
+		return ExecutionScript.execScript(CommandPathEnum.CALL_API, api.toString());
 	}
 
 	/**
@@ -247,4 +248,61 @@ public class Sfeirito {
 		return ExecutionScript.execScript(CommandPathEnum.ROTATE, rotation.toString());
 	}
 
+	/**
+	 * 
+	 * Create a mock from parameters
+	 * 
+     * exemple output : http://10.2.32.124:8080/mockMethod?class=com.example.Operation&method=substraction&result=1
+     * 
+	 * @param className
+	 * @param methodName
+	 * @param result
+	 * @return
+	 * @throws IOException
+	 * @throws URISyntaxException
+	 */
+	public static Process mock(String className, String methodName, String result) throws IOException, URISyntaxException{
+		return ExecutionScript.execScript(
+				CommandPathEnum.CALL_API,
+				"'"+APIEnum.MOCK_GET.toString()+"'",
+				" --data 'class="+className+"&method="+methodName+"&result="+result+"'"
+				);
+	}
+	
+	/**
+	 * 
+	 * Create a mock from json object
+	 * 
+	 * @param jsonObject
+	 * @return
+	 * @throws IOException
+	 * @throws URISyntaxException
+	 */
+	public static Process mock(String jsonObject) throws IOException, URISyntaxException{
+		return ExecutionScript.execScript(
+				CommandPathEnum.CALL_API, 
+				"-i -X POST -d '"+jsonObject+"'",
+				APIEnum.MOCK_POST.toString()
+				);
+	}
+	
+	/**
+	 * 
+	 * Remove a mock
+	 * Cannot remove only one method of a mock
+	 * 
+	 * @param className
+	 * @return
+	 * @throws IOException
+	 * @throws URISyntaxException
+	 */
+	public static Process removeMock(String className) throws IOException, URISyntaxException{
+		return ExecutionScript.execScript(
+				CommandPathEnum.CALL_API,
+				APIEnum.MOCK_REMOVE.toString() + "?class="+className
+				);
+	}
+	
 }
+
+ 
