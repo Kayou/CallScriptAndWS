@@ -20,31 +20,50 @@ public class MockTest extends ExecutionScriptTest{
 	@Override
 	public void testRunOk() throws Exception {
 
+
+		String teste = "{"+
+				"\"classname\" : \"com.example.Operation\","+
+				"\"method\" : \"addition\","+
+			    "\"in\" : [],"+
+			    "\"out\" : [{"+
+			    "	\"classname\" : \"java.lang.Integer\","+
+			    "	\"value\" : \"6\" "+
+			    "}]"+
+			"}";
 		
-//		http://10.2.32.124:8080/mockMethod?class=com.example.Operation&method=substraction&result=1
-		Process proc = Sfeirito.mock("com.example.Operation","substraction","1");
+		Process proc = Sfeirito.mock(teste);
 		List<String> readConsole = ExecutionScript.readConsole(proc);
 		Assert.assertNotNull(readConsole);
 		Assert.assertFalse(readConsole.isEmpty());
-
-		proc = Sfeirito.mock("com.example.Operation","addition","6");
+		
+		teste = "{"+
+				"\"classname\" : \"com.example.Operation\","+
+				"\"method\" : \"substraction\","+
+			    "\"in\" : [],"+
+			    "\"out\" : [{"+
+			    "	\"classname\" : \"java.lang.Integer\","+
+			    "	\"value\" : \"1\" "+
+			    "}]"+
+			"}";
+		
+		proc = Sfeirito.mock(teste);
 		readConsole = ExecutionScript.readConsole(proc);
 		Assert.assertNotNull(readConsole);
 		Assert.assertFalse(readConsole.isEmpty());
  
 		String test = "{"+
-				"\"class\" : \"com.example.ws.WebserviceAPI\","+
+				"\"classname\" : \"com.example.ws.WebserviceAPI\","+
 				"\"method\" : \"getCountries\","+
 			    "\"in\" : ["+
-			    "			{\"class\" : \"java.lang.String\", \"value\" : \"FRANCE\"}"+
+			    "			{\"classname\" : \"java.lang.String\", \"value\" : \"FRANCE\"}"+
 			    "],"+
 			    "\"out\" : [{"+
-			    "	\"class\" : \"com.example.ws.Response\","+
-			    "	\"value\" : {"+
-				"	      \"name\" : \"United States of America\","+
-				"	      \"alpha2_code\" : \"US\","+
-				"	      \"alpha3_code\" : \"USA\""+
-				"	}"+
+			    "	\"classname\" : \"com.example.ws.Response\","+
+			    "	\"value\" : \"{"+
+				"	      \\\"name\\\" : \\\"United States of America\\\","+
+				"	      \\\"alpha2_code\\\" : \\\"US\\\","+
+				"	      \\\"alpha3_code\\\" : \\\"USA\\\""+
+				"	}\""+
 			    "}]"+
 			"}";
 

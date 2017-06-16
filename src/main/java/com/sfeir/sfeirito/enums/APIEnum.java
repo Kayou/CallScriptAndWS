@@ -9,8 +9,7 @@ package com.sfeir.sfeirito.enums;
  */
 public enum APIEnum {
 
-	MOCK_GET("mockMethod"),
-	MOCK_POST("mockMethodPost"),
+	MOCK_POST("mockMethod"),
 	MOCK_REMOVE("mockRemove"),
 	TEST("runTests");
 

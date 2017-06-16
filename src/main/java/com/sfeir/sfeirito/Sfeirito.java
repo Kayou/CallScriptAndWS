@@ -247,27 +247,6 @@ public class Sfeirito {
 	public static Process rotate(RotationEnum rotation) throws IOException, URISyntaxException{
 		return ExecutionScript.execScript(CommandPathEnum.ROTATE, rotation.toString());
 	}
-
-	/**
-	 * 
-	 * Create a mock from parameters
-	 * 
-     * exemple output : http://10.2.32.124:8080/mockMethod?class=com.example.Operation&method=substraction&result=1
-     * 
-	 * @param className
-	 * @param methodName
-	 * @param result
-	 * @return
-	 * @throws IOException
-	 * @throws URISyntaxException
-	 */
-	public static Process mock(String className, String methodName, String result) throws IOException, URISyntaxException{
-		return ExecutionScript.execScript(
-				CommandPathEnum.CALL_API,
-				"'"+APIEnum.MOCK_GET.toString()+"'",
-				" --data 'class="+className+"&method="+methodName+"&result="+result+"'"
-				);
-	}
 	
 	/**
 	 * 
