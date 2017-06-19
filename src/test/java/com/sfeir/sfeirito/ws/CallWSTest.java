@@ -20,7 +20,7 @@ public class CallWSTest {
 		// Given
 		// When
 		//List<String> callApi = callApi("https://code.google.com/apis/console");
-		List<String> callApi = callApi(APIEnum.TEST.toString());
+		List<String> callApi = callApi(APIEnum.TESTS.toString());
 		// Then
 		Assert.assertNotNull(callApi);
 		Assert.assertFalse(callApi.isEmpty());

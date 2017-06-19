@@ -257,11 +257,12 @@ public class Sfeirito {
 	 * @throws IOException
 	 * @throws URISyntaxException
 	 */
-	public static Process mock(String jsonObject) throws IOException, URISyntaxException{
+	public static Process mock(APIEnum adresse, String jsonObject) throws IOException, URISyntaxException{
+		
 		return ExecutionScript.execScript(
 				CommandPathEnum.CALL_API, 
 				"-i -X POST -d '"+jsonObject+"'",
-				APIEnum.MOCK_POST.toString()
+				adresse.toString()
 				);
 	}
 	
@@ -279,6 +280,24 @@ public class Sfeirito {
 		return ExecutionScript.execScript(
 				CommandPathEnum.CALL_API,
 				APIEnum.MOCK_REMOVE.toString() + "?class="+className
+				);
+	}
+
+
+	/**
+	 * 
+	 * Execute unit test from cell phone through webservice call
+	 * 
+	 * @param jsonObject
+	 * @return
+	 * @throws IOException
+	 * @throws URISyntaxException
+	 */
+	public static Process test(String testClassName) throws IOException, URISyntaxException{
+		
+		return ExecutionScript.execScript(
+				CommandPathEnum.CALL_API, 
+				APIEnum.TEST.toString()+"?testClass="+ testClassName
 				);
 	}
 	

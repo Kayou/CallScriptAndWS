@@ -1,9 +1,12 @@
 package com.sfeir.sfeirito.commands;
 
+import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.List;
 
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.Test;
 
 import com.sfeir.sfeirito.ExecutionScriptTest;
 import com.sfeir.sfeirito.Sfeirito;
@@ -16,12 +19,14 @@ public class MockTest extends ExecutionScriptTest{
 	public void initTest(){
 	}
 	
-	
 	@Override
 	public void testRunOk() throws Exception {
+	}
+	
+	@Test
+	public void mockMethod() throws IOException, URISyntaxException{
 
-
-		String teste = "{"+
+		String teste = "[{"+
 				"\"classname\" : \"com.example.Operation\","+
 				"\"method\" : \"addition\","+
 			    "\"in\" : [],"+
@@ -29,14 +34,8 @@ public class MockTest extends ExecutionScriptTest{
 			    "	\"classname\" : \"java.lang.Integer\","+
 			    "	\"value\" : \"6\" "+
 			    "}]"+
-			"}";
-		
-		Process proc = Sfeirito.mock(teste);
-		List<String> readConsole = ExecutionScript.readConsole(proc);
-		Assert.assertNotNull(readConsole);
-		Assert.assertFalse(readConsole.isEmpty());
-		
-		teste = "{"+
+			"},"
+			+ "{"+
 				"\"classname\" : \"com.example.Operation\","+
 				"\"method\" : \"substraction\","+
 			    "\"in\" : [],"+
@@ -44,13 +43,22 @@ public class MockTest extends ExecutionScriptTest{
 			    "	\"classname\" : \"java.lang.Integer\","+
 			    "	\"value\" : \"1\" "+
 			    "}]"+
-			"}";
+			"}]";
 		
-		proc = Sfeirito.mock(teste);
+		Process proc = Sfeirito.mock(APIEnum.MOCK_METHOD, teste);
+		List<String> readConsole = ExecutionScript.readConsole(proc);
+		Assert.assertNotNull(readConsole);
+		Assert.assertFalse(readConsole.isEmpty());
+
+		proc = Sfeirito.test("com.sfeir.testant.tests.TestOperationClass");
 		readConsole = ExecutionScript.readConsole(proc);
 		Assert.assertNotNull(readConsole);
 		Assert.assertFalse(readConsole.isEmpty());
- 
+	}
+	
+	@Test
+	public void mockAPIMethod() throws IOException, URISyntaxException{
+
 		String test = "{"+
 				"\"classname\" : \"com.example.ws.WebserviceAPI\","+
 				"\"method\" : \"getCountries\","+
@@ -67,12 +75,12 @@ public class MockTest extends ExecutionScriptTest{
 			    "}]"+
 			"}";
 
-		proc = Sfeirito.mock(test);
-		readConsole = ExecutionScript.readConsole(proc);
+		Process proc = Sfeirito.mock(APIEnum.MOCK_METHOD, test);
+		List<String> readConsole = ExecutionScript.readConsole(proc);
 		Assert.assertNotNull(readConsole);
 		Assert.assertFalse(readConsole.isEmpty());
 
-		proc = Sfeirito.executeApi(APIEnum.TEST);
+		proc = Sfeirito.test("com.sfeir.testant.tests.TestWebserviceAPIClass");
 		readConsole = ExecutionScript.readConsole(proc);
 		Assert.assertNotNull(readConsole);
 		Assert.assertFalse(readConsole.isEmpty());
@@ -83,7 +91,42 @@ public class MockTest extends ExecutionScriptTest{
 		Assert.assertNotNull(readConsole);
 		Assert.assertFalse(readConsole.isEmpty());
 
-		proc = Sfeirito.executeApi(APIEnum.TEST);
+//		proc = Sfeirito.test("com.sfeir.testant.tests.TestWebserviceAPIClass");
+//		readConsole = ExecutionScript.readConsole(proc);
+//		Assert.assertNotNull(readConsole);
+//		Assert.assertFalse(readConsole.isEmpty());
+	}
+	
+	@Test
+	public void mockCallback() throws IOException, URISyntaxException{
+
+		String teste = "{"+
+				"\"classname\" : \"com.example.callback.APIService\","+
+				"\"method\" : \"country\","+
+			    "\"in\" : ["+
+			    "			{\"classname\" : \"java.lang.String\", \"value\" : \"FRANCE\"}"+
+			    "],"+
+			    "\"out\" : [{"+
+			    "	\"classname\" : \"com.example.callback.CountryResponse\","+
+			    "	\"value\" : \"{"+
+				"	      \\\"RestResponse\\\" : {"+
+				"	      						\\\"messages\\\" : [],"+
+				"	      						\\\"result\\\" : [{"+
+				"	      								\\\"name\\\" : \\\"India\\\","+
+				"	      								\\\"alpha2_code\\\" : \\\"IN\\\","+
+				"	      								\\\"alpha3_code\\\" : \\\"IND\\\""+
+				"		  				   		}]"
+				+ "		  }"
+				+ " }\""+
+			    "}]"+
+			"}";
+		
+		Process proc = Sfeirito.mock(APIEnum.MOCK_CALLBACK, teste);
+		List<String> readConsole = ExecutionScript.readConsole(proc);
+		Assert.assertNotNull(readConsole);
+		Assert.assertFalse(readConsole.isEmpty());
+
+		proc = Sfeirito.test("com.sfeir.testant.tests.TestAPIServiceClass");
 		readConsole = ExecutionScript.readConsole(proc);
 		Assert.assertNotNull(readConsole);
 		Assert.assertFalse(readConsole.isEmpty());

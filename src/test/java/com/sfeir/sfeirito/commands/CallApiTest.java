@@ -19,7 +19,7 @@ public class CallApiTest extends ExecutionScriptTest{
 	
 	@Override
 	public void testRunOk() throws Exception {
-		Process proc = Sfeirito.executeApi(APIEnum.TEST);
+		Process proc = Sfeirito.executeApi(APIEnum.TESTS);
 		List<String> readConsole = ExecutionScript.readConsole(proc);
 		Assert.assertNotNull(readConsole);
 		Assert.assertFalse(readConsole.isEmpty());

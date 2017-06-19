@@ -9,9 +9,11 @@ package com.sfeir.sfeirito.enums;
  */
 public enum APIEnum {
 
-	MOCK_POST("mockMethod"),
+	MOCK_METHOD("mockMethod"),
+	MOCK_CALLBACK("mockCallBack"),
 	MOCK_REMOVE("mockRemove"),
-	TEST("runTests");
+	TEST("runTest"),
+	TESTS("runTests");
 
 	private String serverUrl = "http://10.2.32.126:8080/";	
 	
