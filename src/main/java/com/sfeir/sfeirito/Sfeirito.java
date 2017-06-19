@@ -8,6 +8,7 @@ import com.sfeir.sfeirito.enums.CommandPathEnum;
 import com.sfeir.sfeirito.enums.PermissionEnum;
 import com.sfeir.sfeirito.enums.RotationEnum;
 import com.sfeir.sfeirito.utils.ExecutionScript;
+import com.sfeir.sfeirito.ws.PostJson;
 
 /**
  * 
@@ -257,11 +258,11 @@ public class Sfeirito {
 	 * @throws IOException
 	 * @throws URISyntaxException
 	 */
-	public static Process mock(APIEnum adresse, String jsonObject) throws IOException, URISyntaxException{
+	public static Process mock(APIEnum adresse, PostJson jsonObject) throws IOException, URISyntaxException{
 		
 		return ExecutionScript.execScript(
 				CommandPathEnum.CALL_API, 
-				"-i -X POST -d '"+jsonObject+"'",
+				"-i -X POST -d '"+jsonObject.toJsonString()+"'",
 				adresse.toString()
 				);
 	}

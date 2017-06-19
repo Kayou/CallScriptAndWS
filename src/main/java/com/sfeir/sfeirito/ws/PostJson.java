@@ -3,6 +3,8 @@ package com.sfeir.sfeirito.ws;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.Gson;
+
 public class PostJson {
 	
 	private String classname;
@@ -22,6 +24,12 @@ public class PostJson {
 	public void addResult(String classname, String value){
 		out.add(new PostArgument(classname, value));
 	}
+	
+	public String toJsonString(){
+		Gson gson = new Gson();
+		return gson.toJson(this);
+	}
+	
 	
 	public class PostArgument{
 		

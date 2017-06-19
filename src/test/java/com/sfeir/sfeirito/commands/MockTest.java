@@ -9,7 +9,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.google.gson.Gson;
 import com.sfeir.sfeirito.ExecutionScriptTest;
 import com.sfeir.sfeirito.Sfeirito;
 import com.sfeir.sfeirito.enums.APIEnum;
@@ -39,11 +38,7 @@ public class MockTest extends ExecutionScriptTest{
 		postJson.addResult("java.lang.Integer", "1");
 		postArray.add(postJson);
 		
-		Gson gson = new Gson();
-		String postString = gson.toJson(postArray);
-		
-		
-		Process proc = Sfeirito.mock(APIEnum.MOCK_METHOD, postString);
+		Process proc = Sfeirito.mock(APIEnum.MOCK_METHOD, postJson);
 		List<String> readConsole = ExecutionScript.readConsole(proc);
 		Assert.assertNotNull(readConsole);
 		Assert.assertFalse(readConsole.isEmpty());
@@ -68,11 +63,8 @@ public class MockTest extends ExecutionScriptTest{
 		PostJson postJson = new PostJson("com.example.ws.WebserviceAPI","getCountries");
 		postJson.addArgument("java.lang.String", "FRANCE");
 		postJson.addResult("com.example.ws.Response", complexResultObject);
-		
-		Gson gson = new Gson();
-		String postString = gson.toJson(postJson);
 
-		Process proc = Sfeirito.mock(APIEnum.MOCK_METHOD, postString);
+		Process proc = Sfeirito.mock(APIEnum.MOCK_METHOD, postJson);
 		List<String> readConsole = ExecutionScript.readConsole(proc);
 		Assert.assertNotNull(readConsole);
 		Assert.assertFalse(readConsole.isEmpty());
@@ -110,10 +102,7 @@ public class MockTest extends ExecutionScriptTest{
 		postJson.addArgument("java.lang.String", "FRANCE");
 		postJson.addResult("com.example.callback.CountryResponse", complexResultObject);
 		
-		Gson gson = new Gson();
-		String postString = gson.toJson(postJson);
-		
-		Process proc = Sfeirito.mock(APIEnum.MOCK_CALLBACK, postString);
+		Process proc = Sfeirito.mock(APIEnum.MOCK_CALLBACK, postJson);
 		List<String> readConsole = ExecutionScript.readConsole(proc);
 		Assert.assertNotNull(readConsole);
 		Assert.assertFalse(readConsole.isEmpty());
