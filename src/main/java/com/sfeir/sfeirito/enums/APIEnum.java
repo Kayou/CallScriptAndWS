@@ -15,7 +15,7 @@ public enum APIEnum {
 	TEST("runTest"),
 	TESTS("runTests");
 
-	private String serverUrl = "http://10.2.32.126:8080/";	
+	private String serverUrl = "http://10.2.32.68:8080/";	
 	
 	private String apiName;
 	
