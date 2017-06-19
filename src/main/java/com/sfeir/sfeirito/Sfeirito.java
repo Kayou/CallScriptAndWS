@@ -2,7 +2,9 @@ package com.sfeir.sfeirito;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.util.List;
 
+import com.google.gson.Gson;
 import com.sfeir.sfeirito.enums.APIEnum;
 import com.sfeir.sfeirito.enums.CommandPathEnum;
 import com.sfeir.sfeirito.enums.PermissionEnum;
@@ -263,6 +265,27 @@ public class Sfeirito {
 		return ExecutionScript.execScript(
 				CommandPathEnum.CALL_API, 
 				"-i -X POST -d '"+jsonObject.toJsonString()+"'",
+				adresse.toString()
+				);
+	}
+	
+	/**
+	 * 
+	 * Create a mock from json object
+	 * 
+	 * @param jsonObject
+	 * @return
+	 * @throws IOException
+	 * @throws URISyntaxException
+	 */
+	public static Process mock(APIEnum adresse, List<PostJson> jsonObject) throws IOException, URISyntaxException{
+
+		Gson gson = new Gson();
+		String jsonList = gson.toJson(jsonObject);
+		
+		return ExecutionScript.execScript(
+				CommandPathEnum.CALL_API, 
+				"-i -X POST -d '"+jsonList+"'",
 				adresse.toString()
 				);
 	}

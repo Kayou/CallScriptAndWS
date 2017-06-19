@@ -38,7 +38,7 @@ public class MockTest extends ExecutionScriptTest{
 		postJson.addResult("java.lang.Integer", "1");
 		postArray.add(postJson);
 		
-		Process proc = Sfeirito.mock(APIEnum.MOCK_METHOD, postJson);
+		Process proc = Sfeirito.mock(APIEnum.MOCK_METHOD, postArray);
 		List<String> readConsole = ExecutionScript.readConsole(proc);
 		Assert.assertNotNull(readConsole);
 		Assert.assertFalse(readConsole.isEmpty());
