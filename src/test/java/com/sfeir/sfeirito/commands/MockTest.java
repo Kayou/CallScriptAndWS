@@ -24,7 +24,7 @@ public class MockTest extends ExecutionScriptTest{
 	}
 	
 	@Test
-	public void mockMethod() throws IOException, URISyntaxException{
+	public void mockMethod() throws IOException, URISyntaxException, InterruptedException{
 
 		String teste = "[{"+
 				"\"classname\" : \"com.example.Operation\","+
@@ -49,6 +49,8 @@ public class MockTest extends ExecutionScriptTest{
 		List<String> readConsole = ExecutionScript.readConsole(proc);
 		Assert.assertNotNull(readConsole);
 		Assert.assertFalse(readConsole.isEmpty());
+		
+		Thread.sleep(1000);
 
 		proc = Sfeirito.test("com.sfeir.testant.tests.TestOperationClass");
 		readConsole = ExecutionScript.readConsole(proc);
