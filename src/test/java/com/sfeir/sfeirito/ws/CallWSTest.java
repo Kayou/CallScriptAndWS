@@ -15,7 +15,7 @@ import com.sfeir.sfeirito.enums.APIEnum;
 
 public class CallWSTest {
 
-	@Test
+	//@Test
 	public void callOkTest() throws Exception {
 		// Given
 		// When
