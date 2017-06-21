@@ -7,6 +7,7 @@ import java.util.List;
 import com.google.gson.Gson;
 import com.sfeir.sfeirito.enums.APIEnum;
 import com.sfeir.sfeirito.enums.CommandPathEnum;
+import com.sfeir.sfeirito.enums.InputKeyEnum;
 import com.sfeir.sfeirito.enums.PermissionEnum;
 import com.sfeir.sfeirito.enums.RotationEnum;
 import com.sfeir.sfeirito.utils.ExecutionScript;
@@ -323,6 +324,23 @@ public class Sfeirito {
 				CommandPathEnum.CALL_API, 
 				APIEnum.TEST.toString()+"?testClass="+ testClassName
 				);
+	}
+	
+	public static Process playKey(InputKeyEnum key) throws IOException, URISyntaxException{
+		return ExecutionScript.execScript(
+				CommandPathEnum.INPUT_KEY, 
+				key.toString()
+				);
+	}
+
+	public static Process startApplication(String packageName, String activity) throws IOException, URISyntaxException{
+		String arg = packageName;
+		
+		if(!activity.isEmpty()){
+			arg +="/."+activity;
+		}
+		
+		return ExecutionScript.execScript(CommandPathEnum.START_APPLICATION, packageName, activity);
 	}
 	
 }

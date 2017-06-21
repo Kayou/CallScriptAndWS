@@ -21,7 +21,9 @@ public enum CommandPathEnum {
 	APK_INSTALL("install.sh"),
 	APK_UNINSTALL("uninstall.sh"),  
 	FILE_UPLOAD("upload_file.sh"), 
-	FILE_DELETE("delete_file.sh"), 
+	FILE_DELETE("delete_file.sh"),  
+	INPUT_KEY("input_key.sh"),
+	START_APPLICATION("start_application.sh"),
 	MOBILE_DATA("mobile_data.sh");
 
 	//resource path directory

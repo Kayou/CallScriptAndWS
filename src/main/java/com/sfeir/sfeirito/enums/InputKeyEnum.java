@@ -9,21 +9,24 @@ package com.sfeir.sfeirito.enums;
  *
  */
 public enum InputKeyEnum {
-	HOME(3), BACK(4), OK(66);
+	HOME("KEYCODE_HOME"), 
+	BACK("KEYCODE_BACK"), 
+	RECENT_APPS("KEYCODE_APP_SWITCH"), 
+	OK("KEYCODE_ENTER");
 	
 	//values relative to adb command
-	private int mode;
+	private String mode;
 	
-	InputKeyEnum(int mode){
+	InputKeyEnum(String mode){
 		this.mode = mode;
 	}
 
-	public int getMode() {
+	public String getMode() {
 		return mode;
 	}
 	
 	@Override
 	public String toString() {
-		return String.valueOf(mode);
+		return mode;
 	}
 }
