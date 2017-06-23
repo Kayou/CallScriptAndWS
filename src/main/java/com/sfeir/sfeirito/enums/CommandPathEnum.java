@@ -24,6 +24,7 @@ public enum CommandPathEnum {
 	FILE_DELETE("delete_file.sh"),  
 	INPUT_KEY("input_key.sh"),
 	START_APPLICATION("start_application.sh"),
+	FORCE_STOP("force_stop.sh"),
 	MOBILE_DATA("mobile_data.sh");
 
 	//resource path directory

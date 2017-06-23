@@ -342,6 +342,13 @@ public class Sfeirito {
 		
 		return ExecutionScript.execScript(CommandPathEnum.START_APPLICATION, packageName, activity);
 	}
+
+	public static Process forceStop(String packageName) throws IOException, URISyntaxException{
+		return ExecutionScript.execScript(
+				CommandPathEnum.FORCE_STOP, 
+				packageName
+				);
+	}
 	
 }
 
