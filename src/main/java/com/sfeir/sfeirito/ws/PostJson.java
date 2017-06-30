@@ -6,41 +6,48 @@ import java.util.List;
 import com.google.gson.Gson;
 
 public class PostJson {
-	
+
 	private String classname;
 	private String method;
 	private List<PostArgument> in = new ArrayList<PostJson.PostArgument>();
-	private List<PostArgument> out = new ArrayList<PostJson.PostArgument>();
-	
+	private PostArgument out;
+	private List<PostArgument> listOut = new ArrayList<>();
+
+
 	public PostJson(String classname, String method){
 		this.classname = classname;
 		this.method = method;
 	}
-	
+
 	public void addArgument(String classname, String value){
 		in.add(new PostArgument(classname, value));
 	}
 
 	public void addResult(String classname, String value){
-		out.add(new PostArgument(classname, value));
+		listOut.add(new PostArgument(classname, value));
 	}
-	
+
+	public void setResult(String classname, String value){
+		out = new PostArgument(classname, value);
+	}
+
 	public String toJsonString(){
 		Gson gson = new Gson();
 		return gson.toJson(this);
 	}
-	
-	
+
+
+
 	public class PostArgument{
-		
+
 		private String classname;
 		private String value;
-		
+
 		public PostArgument(String classname, String value){
 			this.classname = classname;
 			this.value = value;
 		}
-		
+
 		public String getClassname() {
 			return classname;
 		}
@@ -79,12 +86,20 @@ public class PostJson {
 		this.in = in;
 	}
 
-	public List<PostArgument> getOut() {
+	public Object getOut() {
 		return out;
 	}
 
-	public void setOut(List<PostArgument> out) {
+	public void setOut(PostArgument out) {
 		this.out = out;
+	}
+
+	public List<PostArgument> getListOut() {
+		return listOut;
+	}
+
+	public void setListOut(List<PostArgument> listOut) {
+		this.listOut = listOut;
 	}
 
 }

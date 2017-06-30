@@ -12,11 +12,10 @@ public enum APIEnum {
 	MOCK_METHOD("mockMethod"),
 	MOCK_CALLBACK("mockCallBack"),
 	MOCK_REMOVE("mockRemove"),
-	TEST("runTest"),
-	MOBILE_REQUEST("mobileRequest"),
+	TEST("runTest"), 
 	TESTS("runTests");
 
-	private String serverUrl = "http://10.2.32.164:8080/";	
+	private String serverUrl = "http://10.2.32.133:8080/";	
 	
 	private String apiName;
 	

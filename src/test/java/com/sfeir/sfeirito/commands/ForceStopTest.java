@@ -19,7 +19,8 @@ public class ForceStopTest extends ExecutionScriptTest{
 	@Override
 	public void testRunOk() throws Exception {
 		
-		Process proc = Sfeirito.forceStop("com.sfeir.testant");
+//		Process proc = Sfeirito.forceStop("com.sfeir.testant");
+		Process proc = Sfeirito.forceStop("com.google.android.gms");
 		List<String> readConsole = ExecutionScript.readConsole(proc);
 		Assert.assertNotNull(readConsole);
 		Assert.assertFalse(readConsole.isEmpty());

@@ -340,7 +340,7 @@ public class Sfeirito {
 			arg +="/."+activity;
 		}
 		
-		return ExecutionScript.execScript(CommandPathEnum.START_APPLICATION, packageName, activity);
+		return ExecutionScript.execScript(CommandPathEnum.START_APPLICATION, arg, activity);
 	}
 
 	public static Process forceStop(String packageName) throws IOException, URISyntaxException{
